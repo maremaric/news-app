@@ -8,10 +8,10 @@ import { NwesCardProps } from '../../types/index';
 
 export default function NewsCard({ title, description, image }: NwesCardProps) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 700 }}>
       {image ? (
         <CardMedia
-          sx={{ height: 140 }}
+          sx={{ height: 250 }}
           image={image}
           title={title}
         />
