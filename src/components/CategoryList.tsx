@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useNewsData } from '../hooks/useNewsData';
+import { useCategoryData } from '../hooks/useCategoryData';
 import { AxiosError, AxiosResponse } from 'axios';
-import { NewsData } from '../../types/index';
+import { NewsData } from '../../types';
 import NewsCard from './NewsCard';
 import Loader from './Loader';
 
-const NewsList = ({ country, searchQuery }: { country: string; searchQuery: string }) => {
-  const [itemsToShow, setItemsToShow] = useState(6); // State to keep track of items to display
+const CategoryLists = ({ country, category, searchQuery }: { country: string; category: string; searchQuery: string }) => {
+    const [itemsToShow, setItemsToShow] = useState(6); // State to keep track of items to display
 
   const onSuccess = (data: AxiosResponse<NewsData>) => {
     console.log('Perform side effect after data fetching', data);
@@ -16,16 +16,18 @@ const NewsList = ({ country, searchQuery }: { country: string; searchQuery: stri
     console.log('Perform side effect after encountering error', error);
   };
 
-  const { data, error, isLoading } = useNewsData(country, onSuccess, onError);
+  const { data, error, isLoading } = useCategoryData(country, category, onSuccess, onError);
 
   const showMoreItems = () => {
     setItemsToShow((prevItemsToShow) => prevItemsToShow + 6); // Increase the number of items by 6
   };
 
-  // Provide a default empty array if data or articles are undefined
-  const filteredArticles = data?.data.articles.filter((article) =>
-    article.title.toLowerCase().includes(searchQuery.toLowerCase())
-  ) || [];
+  if (isLoading) return <Loader />;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const filteredArticles = (data?.data.articles || []).filter(
+    (article) => article.title && article.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -60,4 +62,4 @@ const NewsList = ({ country, searchQuery }: { country: string; searchQuery: stri
   );
 };
 
-export default NewsList;
+export default CategoryLists;

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useNewsData } from '../hooks/useNewsData';
 import dayjs from 'dayjs';
 import PlaceholderImage from '../../src/assets/news.jpg';
+import Loader from './Loader';
 
 const ArticlePage = () => {
   const { id, country } = useParams<{ id: string; country: string }>();
@@ -21,7 +22,7 @@ const ArticlePage = () => {
 
   const { data, error, isLoading } = useNewsData(country || 'us', () => {}, () => {});
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;
 
   if (!id || !country) return <p>Article or country not found</p>;

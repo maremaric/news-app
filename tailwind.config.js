@@ -11,7 +11,7 @@ module.exports = {
         inter: ['Inter', 'sans-serif'],
       },
       colors: {
-        'primary-blue': '#2771e8',
+        'primary-blue': 'rgba(88,140,224,1)',
         'loader-bg': 'rgba(255,255,255, 0.7);'
       }
     },
