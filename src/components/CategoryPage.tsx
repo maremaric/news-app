@@ -22,7 +22,8 @@ const CategoryPage = () => {
         <div className='section'>
           <div className="container">
             <h1 className="text-3xl font-bold text-primary-blue mb-8">
-              News from - <span className='uppercase'>{country} and Category - {category}</span>
+              News from - <span className='uppercase'>{country}<br /></span>
+              Category - <span className='uppercase'>{category}</span>
             </h1>
             <CategoryLists country={country} category={category} searchQuery={searchQuery} />
           </div>
