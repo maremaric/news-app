@@ -25,5 +25,5 @@ export interface NavProps {
 export interface NwesCardProps {
     title: string;
     description: string;
-    image: any;
+    image: string | null;
 }

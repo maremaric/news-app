@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNewsData } from '../hooks/useNewsData';
 import { AxiosError, AxiosResponse } from 'axios';
-import { NewsData, NavProps } from '../../types/index';
+import { NewsData } from '../../types/index';
 import NewsCard from './NewsCard';
 
 const NewsList = ({ country, searchQuery }: { country: string; searchQuery: string }) => {
