@@ -1,5 +1,11 @@
-import Logo from '../../public/neos.svg';
-import { NavProps } from '../../types/index';
+import Logo from '../../src/assets/neos.svg';
+
+export interface NavProps {
+    country: string;
+    handleCountryChange: (newCountry: string) => void;
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
+}
 
 const Nav = ({ country, handleCountryChange, searchQuery, setSearchQuery }: NavProps) => {
   return (

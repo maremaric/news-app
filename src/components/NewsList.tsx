@@ -27,28 +27,31 @@ const NewsList = ({ country, searchQuery }: { country: string; searchQuery: stri
   ) || [];
 
   return (
-    <div>
-      {isLoading ? <p>Loading...</p> : null}
-      {error ? <p>Error: {error.message}</p> : null}
-      {data && (
-        <div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredArticles.slice(0, itemsToShow).map((article, index) => (
-              <div className="flex" key={index}>
-                <NewsCard title={article.title} description={article.description} image={article.urlToImage} />
-              </div>
-            ))}
-          </div>
-          {itemsToShow < filteredArticles.length && ( // Show "Show More" button only if there are more items to display
-            <div className="mt-8 flex justify-center">
-              <button onClick={showMoreItems} className="px-4 py-2 bg-blue-500 text-white rounded">
-                Show More
-              </button>
+    <>
+        {isLoading ? <p>Loading...</p> : null}
+        {error ? <p>Error: {error.message}</p> : null}
+        {data && (
+            <div className='container'>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {filteredArticles
+                .filter(article => article.title !== '[Removed]') // Filter out articles with title [Removed]
+                .slice(0, itemsToShow)
+                .map((article, index) => (
+                    <div className="flex" key={index}>
+                    <NewsCard title={article.title} description={article.description} image={article.urlToImage} id={index} country={country} />
+                    </div>
+                ))}
             </div>
-          )}
-        </div>
-      )}
-    </div>
+            {itemsToShow < filteredArticles.length && ( // Show "Show More" button only if there are more items to display
+                <div className="mt-8 flex justify-center">
+                <button onClick={showMoreItems} className="px-4 py-2 bg-blue-500 text-white rounded">
+                    Show More
+                </button>
+                </div>
+            )}
+            </div>
+        )}
+    </>
   );
 };
 

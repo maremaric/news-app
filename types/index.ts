@@ -14,16 +14,3 @@ export interface NewsData {
     totalResults: number;
     articles: NewsArticle[];
 }
-
-export interface NavProps {
-    country: string;
-    handleCountryChange: (newCountry: string) => void;
-    searchQuery: string;
-    setSearchQuery: (query: string) => void;
-}
-
-export interface NwesCardProps {
-    title: string;
-    description: string;
-    image: string | null;
-}

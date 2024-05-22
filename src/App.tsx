@@ -1,33 +1,23 @@
-import { useState } from 'react';
+// App.tsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import ArticlePage from './components/ArticlePage';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import Nav from './components/Nav';
-import NewsList from './components/NewsList';
+
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [country, setCountry] = useState('us');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleCountryChange = (newCountry: string) => {
-    setCountry(newCountry);
-  };
-
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="app">
-        <Nav country={country} handleCountryChange={handleCountryChange} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className='section'>
-          <div className="container">
-            <h1 className="text-3xl font-bold text-primary-blue mb-8">
-              News from - <span className='uppercase'>{country}</span>
-            </h1>
-            <NewsList country={country} searchQuery={searchQuery} />
-          </div>
-        </div>
-        <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:country/article/:id" element={<ArticlePage />} />
+        </Routes>
+      </Router>
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
     </QueryClientProvider>
   );
 }

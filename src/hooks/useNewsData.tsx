@@ -11,7 +11,6 @@ const fetchNews = async (country: string): Promise<AxiosResponse<NewsData>> => {
   }
 
   const response = await axios.get(`${url}/v2/top-headlines?country=${country}&apiKey=${apiKey}`);
-  console.log(response);
   return response;
 };
 
