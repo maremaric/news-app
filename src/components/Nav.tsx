@@ -9,7 +9,7 @@ export interface NavProps {
 
 const Nav = ({ country, handleCountryChange, searchQuery, setSearchQuery }: NavProps) => {
   return (
-    <nav className="py-5 bg-primary-blue">
+    <nav className="py-5 bg-primary-blue fixed w-[100%] z-[1]">
       <div className="container">
         <div className="flex items-center justify-between gap-5">
           <div className='bg-[#fff] rounded-[50%] p-4'>

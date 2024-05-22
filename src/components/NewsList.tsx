@@ -3,6 +3,7 @@ import { useNewsData } from '../hooks/useNewsData';
 import { AxiosError, AxiosResponse } from 'axios';
 import { NewsData } from '../../types/index';
 import NewsCard from './NewsCard';
+import Loader from './Loader';
 
 const NewsList = ({ country, searchQuery }: { country: string; searchQuery: string }) => {
   const [itemsToShow, setItemsToShow] = useState(6); // State to keep track of items to display
@@ -28,7 +29,7 @@ const NewsList = ({ country, searchQuery }: { country: string; searchQuery: stri
 
   return (
     <>
-        {isLoading ? <p>Loading...</p> : null}
+        {isLoading ? <Loader /> : null}
         {error ? <p>Error: {error.message}</p> : null}
         {data && (
             <div className='container'>

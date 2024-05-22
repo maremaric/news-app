@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         'primary-blue': '#2771e8',
+        'loader-bg': 'rgba(255,255,255, 0.7);'
       }
     },
   },
