@@ -12,7 +12,6 @@ const fetchCategory = async (category: string, country: string): Promise<AxiosRe
   }
 
   const response = await axios.get(`${url}/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`);
-  console.log('category results', response);
   return response;
 };
 
@@ -21,7 +20,7 @@ type OnError = (error: AxiosError) => void;
 
 export const useCategoryData = (country: string, category: string, onSuccess: OnSuccess, onError: OnError): UseQueryResult<AxiosResponse<NewsData>, AxiosError> => {
   return useQuery<AxiosResponse<NewsData>, AxiosError>(
-    ['category', category, country],
+    ['news', category, country],
     () => fetchCategory(category, country),
     { onSuccess, onError }
   );

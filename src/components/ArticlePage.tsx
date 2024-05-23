@@ -38,7 +38,10 @@ const ArticlePage = () => {
   return (
     <div className='section'>
       <div className='max-w-[940px] w-[100%] mx-auto'>
-        <h1 className='text-4xl mb-5'>{article.title}</h1>
+        <a href="/" className='text-primary-blue font-bold mb-5 inline-block'>
+            Back to all news
+        </a>
+        <h2 className='text-4xl mb-5'>{article.title}</h2>
         {article.author ? <h3 className='mb-3'>Author: <span className='text text-slate-500 italic'>{article.author}</span></h3> : ''}
         <p className='mb-3'>Published at: <span className='text text-slate-500 italic'>{formatDate(article.publishedAt)}</span></p>
         <img className='w-[100%] object-cover h-[400px] mb-5' src={article.urlToImage ? article.urlToImage : PlaceholderImage} alt={article.title} />
