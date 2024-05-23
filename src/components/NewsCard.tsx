@@ -13,12 +13,13 @@ export interface NwesCardProps {
     image: string | null;
     id: number;
     country: string;
+    category: string;
 }
 
-export default function NewsCard({ title, description, image, id, country }: NwesCardProps) {
+export default function NewsCard({ title, description, image, id, country, category }: NwesCardProps) {
     const navigate = useNavigate();
     const handleLearnMoreClick = () => {
-        navigate(`/${country}/article/${id}`);
+        navigate(`/${country}/${category}/article/${id}`);
     }
 
   return (
