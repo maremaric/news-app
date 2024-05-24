@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Nav from './Nav';
-import CategoryLists from './CategoryList';
+import Nav from '../Nav';
+import CategoryLists from '../CategoryList';
 
 const CategoryPage = () => {
   const { country: paramCountry, category: paramCategory } = useParams<{ country: string; category: string }>();
@@ -13,7 +13,7 @@ const CategoryPage = () => {
 
   useEffect(() => {
     if (paramCountry !== country || paramCategory !== category) {
-      navigate(`/${country}/${category}`);
+      navigate(`/news/${country}/${category}`);
     }
   }, [country, category, paramCountry, paramCategory, navigate]);
 
@@ -37,10 +37,12 @@ const CategoryPage = () => {
       />
       <div className='section'>
         <div className="container">
-          <h1 className="mb-8 text-3xl font-bold text-primary-blue">
+          <h1 className="mb-2 text-3xl font-bold text-primary-blue">
             News from - <span className='uppercase'>{country}<br /></span>
-            Category - <span className='uppercase'>{category}</span>
           </h1>
+          <h2 className='text-xl mb-8 font-bold text-primary-blue'> 
+            Category - <span className='capitalize'>{category === 'general' ? 'Top News' : category}</span>
+          </h2>
           <CategoryLists country={country} category={category} searchQuery={searchQuery} />
         </div>
       </div>

@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useCategoryData } from '../hooks/useCategoryData';
+import { useCategoryData } from '../../hooks/useCategoryData';
 import dayjs from 'dayjs';
-import PlaceholderImage from '../../src/assets/news.jpg';
-import Loader from './Loader';
+import PlaceholderImage from '../../assets/news.jpg'
+import Loader from '../Loader';
 import { Link } from 'react-router-dom';
 
 const ArticlePage = () => {
@@ -33,7 +33,7 @@ const ArticlePage = () => {
   return (
     <div className='section'>
       <div className='max-w-[940px] w-[100%] mx-auto'>
-        <Link to={`/${country}/${category}/`} className='inline-block mb-5 font-bold text-primary-blue'>
+        <Link to={`/news/${country}/${category}/`} className='inline-block mb-5 font-bold text-primary-blue'>
             Back to all news
         </Link>
         <h2 className='mb-5 text-4xl'>{article.title}</h2>

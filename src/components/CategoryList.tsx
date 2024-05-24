@@ -40,7 +40,7 @@ const CategoryLists = ({ country, category, searchQuery }: { country: string; ca
               .slice(0, itemsToShow)
               .map((article, index) => (
                 <div className="flex" key={index}>
-                  <Link className='flex' to={`/${country}/${category}/article/${index}`}>
+                  <Link className='flex' to={`/news/${country}/${category}/article/${index}`}>
                     <NewsCard title={article.title} description={article.description} image={article.urlToImage} id={index} country={country} category={category} />
                   </Link>
                 </div>
