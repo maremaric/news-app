@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ArticlePage from './components/pages/ArticlePage';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+// import { ReactQueryDevtools } from 'react-query/devtools';
 import CategoryPage from './components/pages/CategoryPage';
 
 const queryClient = new QueryClient();
@@ -22,7 +22,7 @@ function App() {
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </Router>
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+      {/* <ReactQueryDevtools initialIsOpen={false} position='bottom-right' /> */}
     </QueryClientProvider>
   );
 }
